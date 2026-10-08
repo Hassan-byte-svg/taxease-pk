@@ -37,7 +37,21 @@
     "privacy": "رازداری",
     "terms": "شرائط",
     "social": "سوشل",
+    "newsletter": "ای میل نوٹس",
+    "newsletterHint": "میلنگ لسٹ ابھی نہیں کھلی۔",
+    "newsletterInvalid": "ای میل لکھیں۔",
+    "newsletterClosed": "شکریہ۔ پتہ محفوظ نہیں ہوا، کیونکہ لسٹ ابھی نہیں کھلی۔",
+    "emailPlaceholder": "you@email.com",
+    "join": "شامل ہوں",
     "rights": "© {year} {brand}۔ تمام حقوق محفوظ ہیں۔"
+  },
+  "Chrome": {
+    "whatsapp": "واٹس ایپ پر بات کریں",
+    "backToTop": "اوپر جائیں",
+    "cookiesTitle": "کوکیز",
+    "cookiesBody": "یہ انتخاب یاد رکھنے کے لیے اسی ڈیوائس پر ایک کوکی استعمال ہوتی ہے۔",
+    "accept": "قبول",
+    "decline": "رد"
   },
   "Shell": {
     "eyebrow": "انکم ٹیکس، این ٹی این، سیلز ٹیکس",

@@ -25,7 +25,7 @@ export default async function HomePage({
 
   return (
     <main id="content">
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="mx-auto max-w-[75rem] px-4 py-16 sm:px-6 sm:py-24">
         <p className="text-sm font-semibold text-primary">{t("eyebrow")}</p>
         <h1 className="mt-4 max-w-2xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
           {t("title")}
@@ -43,7 +43,7 @@ export default async function HomePage({
           </ul>
         </div>
       </section>
-      <div className="mx-auto grid max-w-6xl gap-4 px-4 pb-20 sm:px-6 md:grid-cols-2">
+      <div className="mx-auto grid max-w-[75rem] gap-4 px-4 pb-20 sm:px-6 md:grid-cols-2">
         {sections.map((id) => (
           <section
             key={id}

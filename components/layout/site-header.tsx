@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { LocaleToggle } from "@/components/layout/locale-toggle";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { buttonVariants } from "@/components/ui/button";
@@ -11,30 +11,56 @@ import { brand } from "@/lib/brand";
 import { mainNav } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
+function subscribeScroll(onStoreChange: () => void) {
+  window.addEventListener("scroll", onStoreChange, { passive: true });
+  return () => window.removeEventListener("scroll", onStoreChange);
+}
+
 export function SiteHeader() {
   const t = useTranslations("Nav");
   const [open, setOpen] = useState(false);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const scrolled = useSyncExternalStore(
+    subscribeScroll,
+    () => window.scrollY > 8,
+    () => false,
+  );
 
   useEffect(() => {
     if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b backdrop-blur-md transition-shadow",
+        scrolled
+          ? "border-border bg-background/80 shadow-card"
+          : "border-transparent bg-background/70",
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-[75rem] items-center gap-2 px-4 sm:gap-3 sm:px-6">
         <Link href="/" className="flex min-w-0 items-center gap-2" aria-label={t("home")}>
           <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-sm font-semibold text-primary-foreground">
             T
           </span>
-          <span className="truncate font-semibold tracking-tight">{brand.name}</span>
+          <span className="hidden truncate font-semibold tracking-tight min-[400px]:inline">
+            {brand.name}
+          </span>
         </Link>
 
-        <nav className="ms-6 hidden items-center gap-1 lg:flex" aria-label={t("primary")}>
+        <nav className="ms-4 hidden items-center gap-1 lg:flex" aria-label={t("primary")}>
           {mainNav.map((item) => (
             <Link
               key={item.id}
@@ -57,7 +83,7 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/file"
-            className={cn(buttonVariants({ variant: "accent" }), "hidden md:inline-flex")}
+            className={cn(buttonVariants({ variant: "primary" }), "hidden md:inline-flex")}
           >
             {t("fileReturn")}
           </Link>
@@ -66,47 +92,69 @@ export function SiteHeader() {
             className={cn(buttonVariants({ variant: "outline" }), "px-3 lg:hidden")}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            onClick={() => setOpen((value) => !value)}
+            onClick={() => setOpen(true)}
           >
-            {open ? <X aria-hidden="true" size={18} /> : <Menu aria-hidden="true" size={18} />}
-            <span className="sr-only">{open ? t("closeMenu") : t("openMenu")}</span>
+            <Menu aria-hidden="true" size={18} />
+            <span className="sr-only">{t("openMenu")}</span>
           </button>
         </div>
       </div>
 
       {open ? (
-        <nav
-          id="mobile-nav"
-          aria-label={t("mobile")}
-          className="border-t border-border bg-background px-4 py-4 lg:hidden"
-        >
-          <div className="mx-auto flex max-w-6xl flex-col gap-2">
-            <Link
-              href="/file"
-              className={buttonVariants({ variant: "accent" })}
-              onClick={() => setOpen(false)}
-            >
-              {t("fileReturn")}
-            </Link>
-            <Link
-              href="/sign-in"
-              className={buttonVariants({ variant: "outline" })}
-              onClick={() => setOpen(false)}
-            >
-              {t("signIn")}
-            </Link>
-            {mainNav.map((item) => (
-              <Link
-                key={item.id}
-                href={item.href}
-                className="rounded-xl px-3 py-2 text-sm font-medium hover:bg-muted"
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <button
+            type="button"
+            className="absolute inset-0 bg-slate-950/40"
+            aria-label={t("closeMenu")}
+            onClick={() => setOpen(false)}
+          />
+          <div
+            id="mobile-nav"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("mobile")}
+            className="drawer-panel absolute inset-y-0 end-0 flex w-full max-w-sm flex-col border-s border-border bg-card shadow-card"
+          >
+            <div className="flex h-16 items-center justify-between px-4">
+              <p className="font-semibold">{brand.name}</p>
+              <button
+                ref={closeRef}
+                type="button"
+                className={cn(buttonVariants({ variant: "outline" }), "px-3")}
                 onClick={() => setOpen(false)}
               >
-                {t(item.id)}
+                <X aria-hidden="true" size={18} />
+                <span className="sr-only">{t("closeMenu")}</span>
+              </button>
+            </div>
+            <nav className="flex flex-1 flex-col gap-2 overflow-y-auto px-4 pb-8" aria-label={t("mobile")}>
+              <Link
+                href="/file"
+                className={buttonVariants({ variant: "primary" })}
+                onClick={() => setOpen(false)}
+              >
+                {t("fileReturn")}
               </Link>
-            ))}
+              <Link
+                href="/sign-in"
+                className={buttonVariants({ variant: "outline" })}
+                onClick={() => setOpen(false)}
+              >
+                {t("signIn")}
+              </Link>
+              {mainNav.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="flex min-h-11 items-center rounded-xl px-3 text-base font-medium hover:bg-muted"
+                  onClick={() => setOpen(false)}
+                >
+                  {t(item.id)}
+                </Link>
+              ))}
+            </nav>
           </div>
-        </nav>
+        </div>
       ) : null}
     </header>
   );

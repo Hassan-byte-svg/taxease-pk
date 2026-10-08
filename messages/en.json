@@ -36,7 +36,21 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "social": "Social",
+    "newsletter": "Notes by email",
+    "newsletterHint": "The mailing list is not open yet.",
+    "newsletterInvalid": "Enter an email address.",
+    "newsletterClosed": "Thanks. This address was not saved, because the list is not open yet.",
+    "emailPlaceholder": "you@email.com",
+    "join": "Join",
     "rights": "© {year} {brand}. All rights reserved."
+  },
+  "Chrome": {
+    "whatsapp": "Chat on WhatsApp",
+    "backToTop": "Back to top",
+    "cookiesTitle": "Cookies",
+    "cookiesBody": "We use a cookie on this device to remember this choice.",
+    "accept": "Accept",
+    "decline": "Decline"
   },
   "Shell": {
     "eyebrow": "Income tax, NTN, and sales tax",
