@@ -118,6 +118,36 @@ body {
   top: 0.5rem;
 }
 
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html[dir="rtl"] .marquee-track {
+  animation-name: marquee-rtl;
+}
+
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
 .drawer-panel {
   animation: drawer-in 220ms ease;
 }
@@ -145,6 +175,11 @@ html[dir="rtl"] .drawer-panel {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
   html {
     scroll-behavior: auto;
   }
