@@ -73,7 +73,7 @@ export function PricingSection() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/file" className={cn(buttonVariants({ variant: popular ? "primary" : "outline" }), "mt-8")}>
+                  <Link href="/contact" className={cn(buttonVariants({ variant: popular ? "primary" : "outline" }), "mt-8")}>
                     {t("start")}
                   </Link>
                 </div>

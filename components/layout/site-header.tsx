@@ -82,7 +82,7 @@ export function SiteHeader() {
             {t("signIn")}
           </Link>
           <Link
-            href="/file"
+            href="/contact"
             className={cn(buttonVariants({ variant: "primary" }), "hidden md:inline-flex")}
           >
             {t("fileReturn")}
@@ -129,7 +129,7 @@ export function SiteHeader() {
             </div>
             <nav className="flex flex-1 flex-col gap-2 overflow-y-auto px-4 pb-8" aria-label={t("mobile")}>
               <Link
-                href="/file"
+                href="/contact"
                 className={buttonVariants({ variant: "primary" })}
                 onClick={() => setOpen(false)}
               >

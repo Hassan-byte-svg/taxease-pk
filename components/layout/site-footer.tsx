@@ -78,6 +78,16 @@ export async function SiteFooter() {
                 {t("terms")}
               </Link>
             </li>
+            <li>
+              <Link className="inline-flex min-h-11 items-center hover:text-footer-foreground" href="/about">
+                {t("about")}
+              </Link>
+            </li>
+            <li>
+              <Link className="inline-flex min-h-11 items-center hover:text-footer-foreground" href="/contact">
+                {t("contact")}
+              </Link>
+            </li>
           </ul>
         </div>
         <div>

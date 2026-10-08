@@ -49,7 +49,7 @@ export function HomeHero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{t("sub")}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/file" className={buttonVariants({ variant: "primary" })}>
+            <Link href="/contact" className={buttonVariants({ variant: "primary" })}>
               {t("start")}
             </Link>
             <a

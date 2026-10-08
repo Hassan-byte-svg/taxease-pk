@@ -28,7 +28,7 @@ export function DeadlineBanner() {
           </p>
           <p className="mt-2 max-w-xl text-sm text-primary-foreground/80">{t("deadlineNote")}</p>
         </div>
-        <Link href="/file" className={buttonVariants({ variant: "accent" })}>
+        <Link href="/contact" className={buttonVariants({ variant: "accent" })}>
           {t("start")}
         </Link>
       </div>
