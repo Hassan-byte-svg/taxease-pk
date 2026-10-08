@@ -1,0 +1,79 @@
+{
+  "Metadata": {
+    "title": "TaxEase PK",
+    "description": "File income tax, register an NTN, and track sales tax for individuals and small businesses in Pakistan."
+  },
+  "Skip": {
+    "toContent": "Skip to content"
+  },
+  "Nav": {
+    "primary": "Primary",
+    "mobile": "Mobile",
+    "tools": "Tax Tools",
+    "services": "Services",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "signIn": "Sign In",
+    "fileReturn": "File My Return",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "home": "TaxEase PK home"
+  },
+  "Theme": {
+    "toggle": "Toggle color theme"
+  },
+  "Locale": {
+    "label": "Language",
+    "en": "EN",
+    "ur": "اردو",
+    "switchToEn": "Switch to English",
+    "switchToUr": "اردو میں دیکھیں"
+  },
+  "Footer": {
+    "tagline": "Income tax, NTN, and sales tax for people and small businesses in Pakistan.",
+    "support": "Support",
+    "policies": "Policies",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "social": "Social",
+    "rights": "© {year} {brand}. All rights reserved."
+  },
+  "Shell": {
+    "eyebrow": "Income tax, NTN, and sales tax",
+    "title": "A calmer way to file tax in Pakistan.",
+    "body": "This shell has navigation, English and Urdu, and a light or dark theme. The marketing page, pricing, and calculator are next.",
+    "palette": "Theme colors",
+    "primary": "Primary",
+    "accent": "Accent",
+    "success": "Success",
+    "warning": "Warning",
+    "danger": "Error",
+    "toolsTitle": "Tax Tools",
+    "toolsBody": "Salary and filing calculators will open from here.",
+    "servicesTitle": "Services",
+    "servicesBody": "Income tax returns, NTN registration, and sales tax will be listed here.",
+    "pricingTitle": "Pricing",
+    "pricingBody": "Essential, Priority, and Premium Consultant plans will be compared here.",
+    "resourcesTitle": "Resources",
+    "resourcesBody": "Deadlines, guides, and answers will be collected here."
+  },
+  "Placeholder": {
+    "signInTitle": "Sign in",
+    "signInBody": "Mobile number and email sign-in open in the next step.",
+    "fileTitle": "File my return",
+    "fileBody": "Filing will start from this page. The form is not open yet.",
+    "privacyTitle": "Privacy",
+    "privacyBody": "The privacy policy will be published before accounts open.",
+    "termsTitle": "Terms",
+    "termsBody": "The terms of use will be published before accounts open.",
+    "back": "Back to home"
+  },
+  "Status": {
+    "loading": "Loading",
+    "errorTitle": "This screen did not load",
+    "errorBody": "Try again. If it keeps failing, refresh the page.",
+    "retry": "Try again",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "That address is not part of TaxEase PK."
+  }
+}

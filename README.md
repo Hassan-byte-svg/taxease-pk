@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaxEase PK
 
-## Getting Started
+Filing and tax analytics for Pakistani individuals and small businesses. The product name lives in `lib/brand.ts`.
 
-First, run the development server:
+This pass is the layout shell: design tokens, sticky navigation, footer, English and Urdu (right-to-left), and dark mode. Marketing, the calculator, accounts, and the dashboard come in later passes.
+
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). English is `/en` and Urdu is `/ur`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run format
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Folder map
 
-## Learn More
+| Path | Role |
+| --- | --- |
+| `app/[locale]` | Pages. `en` and `ur` share one tree. |
+| `components/layout` | Header, footer, and page shell. |
+| `components/ui` | Shared controls such as buttons. |
+| `components/providers` | Theme provider. |
+| `i18n` | Locale routing and request config. |
+| `messages` | `en.json` and `ur.json`. |
+| `lib/brand.ts` | Product name and support contacts. |
+| `tailwind.config.ts` | Color tokens. Runtime values are CSS variables in `app/globals.css`. |
 
-To learn more about Next.js, take a look at the following resources:
+## Plugging in a real API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Route handlers will live under `app/api`. Shared clients will live under `lib`. Swap the mock handlers for Supabase or a Node service without changing page components, as long as the function signatures stay the same. No API is wired in this pass.
